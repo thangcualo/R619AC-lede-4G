@@ -10,14 +10,15 @@
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Add a feed source
-sed -i '$a src-git helloworld https://github.com/fw876/helloworld.git' feeds.conf.default
+# Uncomment a feed source
+#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# Add app
-# git clone -b lede https://github.com/pymumu/luci-app-smartdns package/lean/luci-app-smartdns
-# svn export https://github.com/leesuncom/packages/trunk/net/smartdns package/lean/smartdns
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/lean/luci-app-mosdns
-rm -rf feeds/packages/net/v2ray-geodata && git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata package/lean/v2ray-geodata
+# Add a feed source
+#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
+#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
+git clone https://github.com/kenzok8/small.git package/small
+git clone https://github.com/open-mesh-mirror/batman-adv.git package/batman-adv
 # Add theme
 rm -rf feeds/luci/applications/luci-app-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
 rm -rf feeds/luci/applications/luci-app-argon-config && git clone https://github.com/jerrykuku/luci-app-argon-config.git package/lean/luci-app-argon-config
